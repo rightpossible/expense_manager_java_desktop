@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Expense_manager {
@@ -16,13 +18,21 @@ public class Expense_manager {
             try {
                 file.createNewFile();
                 System.out.println("Created new file: " + filename);
+
+                // Write an empty JSON array to the file
+                try (PrintWriter writer = new PrintWriter(file)) {
+                    writer.print("[]");
+                }
+
             } catch (IOException e) {
                 System.err.println("Error creating new file: " + e.getMessage());
             }
         }
 
+        // Initialize expenses list
+        List<ExpenseIncome> expenses = new ArrayList<>();
+
         // Read data from JSON file
-        List<ExpenseIncome> expenses;
         try {
             expenses = ExpenseJsonReader.readExpensesFromJson(filename);
         } catch (IOException e) {
@@ -30,7 +40,7 @@ public class Expense_manager {
             e.printStackTrace();
             return; // Stop further execution if file reading fails
         }
-        
+
         // Create expense form with loaded data
         final List<ExpenseIncome> finalExpenses = expenses; // effectively final variable
         SwingUtilities.invokeLater(() -> {
