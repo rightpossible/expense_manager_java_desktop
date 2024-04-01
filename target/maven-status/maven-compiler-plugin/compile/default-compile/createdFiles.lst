@@ -14,7 +14,6 @@ com\mycompany\expense_manager\expense_form$5.class
 com\mycompany\expense_manager\ExpenseTableModel.class
 com\mycompany\expense_manager\ExpenseTotal$2.class
 com\mycompany\expense_manager\ExpenseIncome.class
-com\mycompany\expense_manager\ExpensePanel.class
 com\mycompany\expense_manager\expense_form$2.class
 com\mycompany\expense_manager\expense_form$6.class
 com\mycompany\expense_manager\ExpenseJsonWriter$1.class
